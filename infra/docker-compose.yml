@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  # backend:
+  #   build:
+  #     context: ../backend
+  #     dockerfile: Dockerfile
+  #   container_name: backend
+  #   command: sh -c "npx migrate-mongo up && npm start"
+  #   volumes:
+  #     - ../backend:/app
+  #   depends_on:
+  #     - mongodb
+  #   ports:
+  #     - "3000:3000"
+
+volumes:
+  mongo-data:
