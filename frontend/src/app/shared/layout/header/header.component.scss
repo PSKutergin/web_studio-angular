@@ -1,4 +1,5 @@
 @import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/variables";
 
 .header {
   padding: 40px 0;
@@ -25,14 +26,14 @@
 
         li {
           a {
-            color: #071739;
+            color: $dark-blue;
           }
         }
       }
     }
 
     .phone {
-      color: #709fdc;
+      color: $blue;
       margin-right: 141px;
     }
 

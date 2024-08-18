@@ -1,0 +1,61 @@
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/variables";
+
+.footer {
+  background-color: $light-blue;
+  padding: 40px 0 54px 0;
+  font-size: 16px;
+
+  .footer-menu-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+
+    .footer-menu {
+      .menu-list {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        li {
+          color: $dark-blue;
+        }
+      }
+    }
+  }
+
+  .footer-contacts {
+    display: flex;
+    align-items: baseline;
+    gap: 60px;
+    margin-bottom: 6px;
+
+    .footer-contact-item {
+      max-width: 253px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .contact-head {
+        font-family: $font-montserrat-medium;
+        color: $blue;
+      }
+
+      .contact-info {
+        color: $dark-blue;
+        line-height: 130%;
+      }
+
+      .contact-social {
+        display: flex;
+        align-items: center;
+        gap: 19px;
+      }
+    }
+  }
+
+  .footer-copyright {
+    color: $blue;
+  }
+}
