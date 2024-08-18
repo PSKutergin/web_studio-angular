@@ -9,8 +9,7 @@
 
 html,
 body {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
+  font-family: $font-montserrat;
 }
 
 li {
@@ -56,5 +55,19 @@ input[type="number"] {
     padding: 10px 20px;
     font-size: 12px;
     font-family: $font-montserrat-medium;
+  }
+}
+
+.input {
+  padding: 20px;
+  border: 2px solid $blue;
+  border-radius: 3px;
+  font-family: $font-montserrat;
+  font-size: 14px;
+  color: $dark-blue;
+  outline: none;
+
+  &::placeholder {
+    color: #a8aba7;
   }
 }

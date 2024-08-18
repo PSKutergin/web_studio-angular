@@ -1,0 +1,17 @@
+@import "../../../../assets/styles/auth-form";
+
+.signup {
+  padding: 120px 0;
+
+  .container {
+    display: flex;
+    gap: 185px;
+    align-items: flex-start;
+
+    .page-image {
+      img {
+        vertical-align: top;
+      }
+    }
+  }
+}
