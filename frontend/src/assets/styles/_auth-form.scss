@@ -4,6 +4,10 @@
 .auth-form {
   font-family: $font-montserrat;
 
+  &.auth-form-login {
+    margin-top: 14px;
+  }
+
   .auth-title {
     font-family: $font-lora;
     font-size: 36px;
