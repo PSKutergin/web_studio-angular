@@ -1,0 +1,424 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+.main {
+  padding-bottom: 120px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+
+    .slider {
+      position: relative;
+
+      .slider-arrows {
+        display: flex;
+
+        a {
+          top: calc(50% - 5px);
+          display: flex;
+          position: absolute;
+          z-index: 2;
+
+          &.move-backward {
+            left: 11px;
+          }
+
+          &.move-forward {
+            right: 11px;
+          }
+        }
+      }
+
+      .slider-item {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .slider-item-content {
+          position: absolute;
+          top: 100px;
+          left: 80px;
+          z-index: 1;
+
+          .slider-item-type {
+            color: $blue;
+            font-family: $font-montserrat-semi-bold;
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+          }
+
+          .slider-item-title {
+            max-width: 610px;
+            font-family: $font-lora;
+            font-size: 50px;
+            line-height: 130%;
+            color: $white;
+
+            span {
+              color: $blue;
+            }
+          }
+
+          .slider-item-text {
+            max-width: 456px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-family: $font-montserrat;
+            font-size: 24px;
+            line-height: 130%;
+            color: $white;
+          }
+
+          .slider-item-button {
+            margin-top: 40px;
+          }
+        }
+
+        .slider-item-img {
+          width: 750px;
+          height: 500px;
+        }
+
+        .slider-item-circle {
+          position: absolute;
+          left: -702px;
+          bottom: -202px;
+          width: 1405px;
+          height: 1405px;
+          border-radius: 50%;
+          background: $light-blue;
+        }
+      }
+    }
+
+    .services {
+      .services-title {
+        @include head-lora-38;
+        margin-bottom: 40px;
+      }
+
+      .services-list {
+        display: flex;
+        align-items: flex-start;
+        gap: 25px;
+
+        .services-item {
+          display: flex;
+          flex-direction: column;
+          width: 291px;
+          height: 498px;
+
+          .services-item-img {
+            width: 100%;
+            height: 291px;
+            margin-bottom: 15px;
+
+            img {
+              border-radius: 5px;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .services-item-title {
+            @include head-montserrat-20;
+            margin-bottom: 10px;
+          }
+
+          .services-item-text {
+            font-family: $font-montserrat;
+            font-size: 14px;
+            line-height: 130%;
+            color: $dark-blue;
+          }
+
+          .services-item-extra {
+            align-self: flex-end;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+
+            .services-item-price {
+              font-family: $font-montserrat-semi-bold;
+              font-size: 20px;
+              color: $blue;
+            }
+          }
+        }
+      }
+    }
+
+    .about {
+      display: flex;
+      align-items: flex-start;
+      gap: 68px;
+
+      .about-img {
+      }
+
+      .about-content {
+        .about-title {
+          @include head-lora-38;
+          margin-bottom: 20px;
+        }
+
+        .about-text {
+          max-width: 633px;
+          font-family: $font-montserrat;
+          font-size: 14px;
+          line-height: 130%;
+          margin-bottom: 40px;
+
+          span {
+            font-family: $font-montserrat-medium;
+          }
+        }
+
+        .about-advantages {
+          .about-advantages-title {
+            font-family: $font-lora;
+            font-size: 26px;
+            color: $blue;
+            margin-bottom: 20px;
+          }
+
+          .about-advantages-list {
+            display: grid;
+            grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+            gap: 20px 70px;
+
+            .about-advantages-item {
+              display: flex;
+              gap: 20px;
+
+              .about-advantages-item-point {
+                margin-top: 33px;
+                flex: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: $light-blue;
+                position: relative;
+
+                span {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-40%, -60%);
+                  font-size: 50px;
+                  line-height: 130%;
+                  color: $blue;
+                }
+              }
+
+              .about-advantages-item-text {
+                font-family: $font-montserrat;
+                font-size: 14px;
+                line-height: 130%;
+
+                span {
+                  font-family: $font-montserrat-medium;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .articles {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      .articles-title {
+        @include head-lora-38;
+      }
+
+      .articles-list {
+        display: flex;
+        align-items: flex-start;
+        gap: 25px;
+
+        .articles-item {
+          position: relative;
+          width: 291px;
+          height: 571px;
+
+          .articles-item-img {
+            width: 100%;
+            height: 291px;
+            margin-bottom: 15px;
+
+            img {
+              border-radius: 5px;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .articles-item-title {
+            @include head-montserrat-20;
+            margin-bottom: 20px;
+          }
+
+          .articles-item-text {
+            font-family: $font-montserrat;
+            font-size: 14px;
+            line-height: 130%;
+            color: $dark-blue;
+          }
+
+          .articles-item-link {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: inline-block;
+            margin-top: 20px;
+            color: $blue;
+            font-family: $font-montserrat;
+            font-size: 16px;
+            line-height: 130%;
+            border-bottom: 1px solid $blue;
+          }
+        }
+      }
+
+      .articles-link {
+        align-self: flex-end;
+        color: $blue;
+        font-family: $font-montserrat-medium;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+    }
+
+    .reviews {
+      .reviews-title {
+        @include head-lora-38;
+        margin-bottom: 20px;
+      }
+
+      .reviews-carousel {
+        position: relative;
+
+        .reviews-item {
+          width: 396px;
+          height: 267px;
+          padding: 30px;
+          border: 2px solid $blue;
+          border-radius: 5px;
+          background: $white;
+
+          .reviews-item-head {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+
+            .reviews-item-image {
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              background-size: cover;
+              background-position: center;
+            }
+
+            .reviews-item-name {
+              font-size: 18px;
+              font-family: $font-montserrat-semi-bold;
+              color: $blue;
+            }
+          }
+
+          .reviews-item-text {
+            margin-top: 15px;
+            font-family: $font-montserrat;
+            font-size: 16px;
+            line-height: 140%;
+            color: $dark-blue;
+          }
+        }
+
+        .reviews-arrows {
+          display: flex;
+
+          a {
+            top: calc(50% - 5px);
+            display: flex;
+            position: absolute;
+
+            &.move-backward {
+              left: -30px;
+            }
+
+            &.move-forward {
+              right: -30px;
+            }
+          }
+        }
+      }
+    }
+
+    .contacts {
+      display: flex;
+      align-items: flex-start;
+      gap: 26px;
+
+      .contacts-map {
+        width: 607px;
+        height: 438px;
+        border-radius: 5px;
+      }
+
+      .contacts-info {
+        max-width: 500px;
+
+        .contacts-title {
+          @include head-lora-38;
+          margin-bottom: 20px;
+        }
+
+        .contacts-items {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .contact-item-head {
+              @include head-montserrat-20;
+              color: $blue;
+            }
+
+            .contact-item-info {
+              font-family: $font-montserrat;
+              font-size: 14px;
+              line-height: 130%;
+              color: $dark-blue;
+            }
+
+            .contact-item-social {
+              display: flex;
+              align-items: center;
+              gap: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

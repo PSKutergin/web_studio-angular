@@ -1,1 +1,377 @@
-<p>main works!</p>
+<main class="main">
+    <section class="container">
+
+        <section class="slider">
+            <owl-carousel-o [options]="customOptions" #owlCar>
+                <ng-template carouselSlide>
+                    <section class="slider-item">
+                        <section class="slider-item-content">
+                            <section class="slider-item-type">Предложение месяца</section>
+                            <section class="slider-item-title">
+                                Продвижение в Instagram для вашего бизнеса <span>-15%</span>!
+                            </section>
+                            <button class="button slider-item-button">Подробнее</button>
+                        </section>
+                        <section class="slider-item-img">
+                            <img src="./assets/images/main/slider1.png" alt="slider-img">
+                        </section>
+                        <section class="slider-item-circle"></section>
+                    </section>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <section class="slider-item">
+                        <section class="slider-item-content">
+                            <section class="slider-item-type">Акция</section>
+                            <section class="slider-item-title">
+                                Нужен грамотный <span>копирайтер</span>?
+                            </section>
+                            <section class="slider-item-text">
+                                Весь декабрь у нас действует акция на работу копирайтера.
+                            </section>
+                            <button class="button slider-item-button">Подробнее</button>
+                        </section>
+                        <section class="slider-item-img">
+                            <img src="./assets/images/main/slider2.png" alt="slider-img">
+                        </section>
+                        <section class="slider-item-circle"></section>
+                    </section>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <section class="slider-item">
+                        <section class="slider-item-content">
+                            <section class="slider-item-type">Новость дня</section>
+                            <section class="slider-item-title">
+                                <span>6 место</span> в ТОП-10 SMM-агенств Москвы!
+                            </section>
+                            <section class="slider-item-text">
+                                Мы благодарим каждого, кто голосовал за нас!
+                            </section>
+                            <button class="button slider-item-button">Подробнее</button>
+                        </section>
+                        <section class="slider-item-img">
+                            <img src="./assets/images/main/slider3.png" alt="slider-img">
+                        </section>
+                        <section class="slider-item-circle"></section>
+                    </section>
+                </ng-template>
+            </owl-carousel-o>
+
+            <section class="slider-arrows">
+                <a class="move-backward" (click)="owlCar.prev()">
+                    <img src="./assets/images/main/arrow-left.png" alt="arrow-left">
+                </a>
+                <a class="move-forward" (click)="owlCar.next()">
+                    <img src="./assets/images/main/arrow-right.png" alt="arrow-right">
+                </a>
+            </section>
+        </section>
+
+        <section class="services">
+            <section class="services-title">Услуги, которые мы предлагаем</section>
+
+            <ul class="services-list">
+                <li class="services-item">
+                    <section class="services-item-img">
+                        <img src="./assets/images/main/site.png" alt="site">
+                    </section>
+                    <section class="services-item-title">Создание сайтов</section>
+                    <section class="services-item-text">
+                        В краткие сроки мы создадим качественный и самое главное продающий сайт для продвижения Вашего
+                        бизнеса!
+                    </section>
+                    <section class="services-item-extra">
+                        <section class="services-item-price">От 7 500₽</section>
+                        <button class="button">Подробнее</button>
+                    </section>
+                </li>
+                <li class="services-item">
+                    <section class="services-item-img">
+                        <img src="./assets/images/main/promotion.png" alt="promotion">
+                    </section>
+                    <section class="services-item-title">Продвижение</section>
+                    <section class="services-item-text">
+                        Вам нужен качественный SMM-специалист или грамотный таргетолог? Мы готовы оказать Вам услугу
+                        “Продвижения” на наивысшем уровне!
+                    </section>
+                    <section class="services-item-extra">
+                        <section class="services-item-price">От 3 500₽</section>
+                        <button class="button">Подробнее</button>
+                    </section>
+                </li>
+                <li class="services-item">
+                    <section class="services-item-img">
+                        <img src="./assets/images/main/advertising.png" alt="advertising">
+                    </section>
+                    <section class="services-item-title">Реклама</section>
+                    <section class="services-item-text">
+                        Без рекламы не может обойтись ни один бизнес или специалист. Обращаясь к нам, мы гарантируем
+                        быстрый прирост клиентов за счёт правильно настроенной рекламы.
+                    </section>
+                    <section class="services-item-extra">
+                        <section class="services-item-price">От 1 000₽</section>
+                        <button class="button">Подробнее</button>
+                    </section>
+                </li>
+                <li class="services-item">
+                    <section class="services-item-img">
+                        <img src="./assets/images/main/copywriting.png" alt="copywriting">
+                    </section>
+                    <section class="services-item-title">Копирайтинг</section>
+                    <section class="services-item-text">
+                        Наши копирайтеры готовы написать Вам любые продающие текста, которые не только обеспечат рост
+                        охватов, но и помогут выйти на новый уровень в продажах.
+                    </section>
+                    <section class="services-item-extra">
+                        <section class="services-item-price">От 750₽</section>
+                        <button class="button">Подробнее</button>
+                    </section>
+                </li>
+            </ul>
+        </section>
+
+        <section class="about">
+            <section class="about-img">
+                <img src="./assets/images/main/about.png" alt="about">
+            </section>
+            <section class="about-content">
+                <section class="about-title">Кто мы и чем мы занимаемся?</section>
+                <section class="about-text">
+                    <span>АйтиШторм</span> — это ваш помощник №1 при решении таких вопросов, как продвижение в сети,
+                    разработка
+                    сайтов для бизнеса и личного бренда, сторисмейкинг, копирайтинг, маркетинг, разработка визуальной
+                    концепции и создание инфопродуктов. Компания была основана в 2019 году и за всё это время смогла
+                    выйти в ТОП-10 агенств, предлагающих услуги продвижения в сети.
+                </section>
+
+                <section class="about-advantages">
+                    <section class="about-advantages-title">Наши преимущества</section>
+                    <ul class="about-advantages-list">
+                        <li class="about-advantages-item">
+                            <section class="about-advantages-item-point">
+                                <span>1</span>
+                            </section>
+                            <section class="about-advantages-item-text">
+                                <span>Мастерски вовлекаем аудиториюв процесс. </span>
+                                Мы увеличиваем процент вовлечённости за короткий
+                                промежуток времени.
+                            </section>
+                        </li>
+                        <li class="about-advantages-item">
+                            <section class="about-advantages-item-point">
+                                <span>2</span>
+                            </section>
+                            <section class="about-advantages-item-text">
+                                <span>Разрабатываем бомбическую визуальную концепцию. </span>
+                                Наши специалисты знают как создать
+                                уникальный образ вашего проекта.
+                            </section>
+                        </li>
+                        <li class="about-advantages-item">
+                            <section class="about-advantages-item-point">
+                                <span>3</span>
+                            </section>
+                            <section class="about-advantages-item-text">
+                                <span>Создаём мощные воронки с помощью текстов. </span>
+                                Наши копирайтеры создают не только вкусные
+                                текста, но и классные воронки.
+                            </section>
+                        </li>
+                        <li class="about-advantages-item">
+                            <section class="about-advantages-item-point">
+                                <span>4</span>
+                            </section>
+                            <section class="about-advantages-item-text">
+                                <span>Помогаем продавать больше. </span>
+                                Мы не только помогаем разработать стратегию по продажам, но
+                                также корректируем её под нужды заказчика.
+                            </section>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+
+        </section>
+
+        <section class="articles">
+            <section class="articles-title">Популярные статьи из блога</section>
+
+            <ul class="articles-list">
+                <li class="articles-item">
+                    <section class="articles-item-img">
+                        <img src="./assets/images/articles/image1.jpg" alt="article-img">
+                    </section>
+                    <section class="articles-item-title">
+                        6 сайтов для повышения продуктивности
+                    </section>
+                    <section class="articles-item-text">
+                        Хотите проводить время в сети с пользой? Наша подборка из шести полезных, но малоизвестных
+                        сайтов увеличит вашу продуктивность, поможет успевать больше в течение дня и всегда быть на шаг
+                        впереди!
+                    </section>
+
+                    <a class="articles-item-link">Читать дальше</a>
+                </li>
+                <li class="articles-item">
+                    <section class="articles-item-img">
+                        <img src="./assets/images/articles/image2.jpg" alt="article-img">
+                    </section>
+                    <section class="articles-item-title">
+                        Как произвести впечатление на нового клиента?
+                    </section>
+                    <section class="articles-item-text">
+                        Поиск новых клиентов — это сложная задача не только для новичков, но и для опытных специалистов.
+                        Мы расскажем, как справиться с волнением, завоевать доверие клиента и произвести на него
+                        потрясающее первое впечатление.
+                    </section>
+
+                    <a class="articles-item-link">Читать дальше</a>
+                </li>
+                <li class="articles-item">
+                    <section class="articles-item-img">
+                        <img src="./assets/images/articles/image3.jpg" alt="article-img">
+                    </section>
+                    <section class="articles-item-title">
+                        Как бороться с конкуренцией на фрилансе?
+                    </section>
+                    <section class="articles-item-text">
+                        Конкуренция — это часть нашей жизни. Мы боремся за место работы, за победу на конкурсе и даже за
+                        возможность купить последний круассан в любимом кафе. Фриланс не исключение.
+                    </section>
+
+                    <a class="articles-item-link">Читать дальше</a>
+                </li>
+                <li class="articles-item">
+                    <section class="articles-item-img">
+                        <img src="./assets/images/articles/image4.jpg" alt="article-img">
+                    </section>
+                    <section class="articles-item-title">
+                        SMM-специалисты: кто они?
+                    </section>
+                    <section class="articles-item-text">
+                        Профессия SММ-менеджера набирает все большую популярность. В эпоху интернета уже не только
+                        новости – приобретение товаров и услуг уходит в онлайн, а просмотр любимых сайтов становится
+                        ежедневной рутиной.
+                    </section>
+
+                    <a class="articles-item-link">Читать дальше</a>
+                </li>
+            </ul>
+
+            <section class="articles-link">
+                <a>Перейти в блог</a>
+                <svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none">
+                    <path
+                        d="M5.44 1C5.59 1 5.75 1.05 5.87 1.17L11.18 6.44C12.05 7.29 12.05 8.7 11.18 9.55L5.87 14.82C5.63 15.05 5.24 15.05 5.01 14.82C4.77 14.59 4.77 14.2 5.01 13.96L10.32 8.7C10.71 8.31 10.71 7.68 10.32 7.29L5.01 2.03C4.77 1.79 4.77 1.41 5.01 1.17C5.13 1.06 5.28 1 5.44 1Z"
+                        fill="#709FDC" fill-opacity="1.000000" fill-rule="nonzero" />
+                    <g opacity="0.000000" />
+                </svg>
+            </section>
+
+        </section>
+
+        <section class="reviews">
+            <section class="reviews-title">Отзывы о нашей работе</section>
+
+            <section class="reviews-carousel">
+                <owl-carousel-o [options]="customOptionsReviews" #owlCarRev>
+                    <ng-template carouselSlide *ngFor="let review of reviews">
+                        <section class="reviews-item">
+                            <section class="reviews-item-head">
+                                <section class="reviews-item-image"
+                                    style="background-image: url('/assets/images/reviews/{{review.image}}')"></section>
+                                <section class="reviews-item-name">{{review.name}}</section>
+                            </section>
+                            <section class="reviews-item-text">{{review.text}}</section>
+                        </section>
+                    </ng-template>
+                </owl-carousel-o>
+
+                <section class="reviews-arrows">
+                    <a class="move-backward" (click)="owlCarRev.prev()">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.5551 15C10.4003 15 10.2455 14.9435 10.1233 14.8224L4.81172 9.55746C3.94818 8.70151 3.94818 7.29647 4.81172 6.44052L10.1233 1.17563C10.3596 0.941456 10.7506 0.941456 10.9869 1.17563C11.2231 1.40981 11.2231 1.7974 10.9869 2.03158L5.67526 7.29647C5.28423 7.68407 5.28423 8.31392 5.67526 8.70151L10.9869 13.9664C11.2231 14.2006 11.2231 14.5882 10.9869 14.8224C10.8647 14.9354 10.7099 15 10.5551 15Z"
+                                fill="#709fdc" />
+                        </svg>
+                    </a>
+                    <a class="move-forward" (click)="owlCarRev.next()">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5.44392 1C5.59871 1 5.75349 1.05652 5.87569 1.17765L11.1873 6.44254C12.0508 7.29849 12.0508 8.70353 11.1873 9.55948L5.87569 14.8244C5.63944 15.0585 5.2484 15.0585 5.01215 14.8244C4.7759 14.5902 4.7759 14.2026 5.01215 13.9684L10.3238 8.70353C10.7148 8.31593 10.7148 7.68608 10.3238 7.29849L5.01215 2.0336C4.7759 1.79942 4.7759 1.41182 5.01215 1.17765C5.13435 1.0646 5.28914 1 5.44392 1Z"
+                                fill="#709fdc" />
+                        </svg>
+                    </a>
+                </section>
+            </section>
+        </section>
+
+        <section class="contacts">
+            <section class="contacts-map">
+                <iframe
+                    src="https://yandex.ru/map-widget/v1/?um=constructor%3Aed3138cd35781ff23dd1dfc06602d4ac36be3bf9997992e059cb0a1db6ea2312&amp;source=constructor"
+                    width="607" height="438" frameborder="0"></iframe>
+            </section>
+
+            <section class="contacts-info">
+                <section class="contacts-title">Контакты</section>
+
+                <section class="contacts-items">
+                    <section class="contact-item">
+                        <section class="contact-item-head">Адрес</section>
+                        <section class="contact-item-info">
+                            Главный офис компании АйтиШторм находится по адресу Пресненская наб., 12, Москва, Россия,
+                            123317.
+                        </section>
+                    </section>
+
+                    <section class="contact-item">
+                        <section class="contact-item-head">Телефон</section>
+                        <section class="contact-item-info">
+                            <a href="tel:+7 (499) 343-13-34">+7 (499) 343-13-34</a>
+                        </section>
+                    </section>
+
+                    <section class="contact-item">
+                        <section class="contact-item-head">E-mail</section>
+                        <section class="contact-item-info">
+                            <a href="mailto:info@itstorm.com">{{"info@itstorm.com"}}</a>
+                        </section>
+                    </section>
+
+                    <section class="contact-item">
+                        <section class="contact-item-head">Мы в социальных сетях:</section>
+                        <section class="contact-item-social">
+                            <a>
+                                <svg width="30.000000" height="30.000000" viewBox="0 0 30 30" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <g clip-path="url(#clip14_131)">
+                                        <path
+                                            d="M5.73 0.26C2.73 0.26 0.26 2.73 0.26 5.73L0.26 24.26C0.26 27.26 2.73 29.73 5.73 29.73L24.26 29.73C27.26 29.73 29.73 27.26 29.73 24.26L29.73 5.73C29.73 2.73 27.26 0.26 24.26 0.26L5.73 0.26ZM5.73 2.94L24.26 2.94C25.81 2.94 27.05 4.18 27.05 5.73L27.05 24.26C27.05 25.81 25.81 27.05 24.26 27.05L5.73 27.05C4.18 27.05 2.94 25.81 2.94 24.26L2.94 5.73C2.94 4.18 4.18 2.94 5.73 2.94ZM14.62 9.95C13.63 9.94 12.8 9.95 12.33 10.18C12.01 10.33 11.77 10.67 11.92 10.69C12.1 10.72 12.52 10.8 12.73 11.1C13.02 11.48 13.01 12.35 13.01 12.35C13.01 12.35 13.16 14.72 12.62 15.02C12.25 15.22 11.75 14.81 10.65 12.92C10.09 11.95 9.66 10.88 9.66 10.88C9.66 10.88 9.59 10.68 9.44 10.57C9.26 10.44 9.02 10.4 9.02 10.4L6.39 10.42C6.39 10.42 6 10.43 5.86 10.6C5.73 10.76 5.85 11.07 5.85 11.07C5.85 11.07 7.9 15.86 10.22 18.28C12.35 20.5 14.77 20.35 14.77 20.35L15.87 20.35C15.87 20.35 16.2 20.32 16.37 20.14C16.52 19.97 16.52 19.66 16.52 19.66C16.52 19.66 16.5 18.19 17.18 17.97C17.85 17.76 18.71 19.39 19.62 20.02C20.32 20.49 20.85 20.39 20.85 20.39L23.3 20.35C23.3 20.35 24.57 20.27 23.97 19.26C23.92 19.18 23.62 18.52 22.15 17.16C20.61 15.74 20.82 15.97 22.67 13.5C23.79 12 24.24 11.09 24.1 10.69C23.97 10.32 23.14 10.42 23.14 10.42L20.38 10.43C20.38 10.43 20.18 10.41 20.03 10.5C19.88 10.58 19.79 10.79 19.79 10.79C19.79 10.79 19.35 11.96 18.77 12.94C17.54 15.03 17.05 15.14 16.85 15.01C16.38 14.71 16.5 13.8 16.5 13.15C16.5 11.13 16.8 10.29 15.9 10.07C15.6 10 15.38 9.95 14.62 9.95Z"
+                                            fill="#B9D5FD" fill-opacity="1.000000" fill-rule="nonzero" />
+                                    </g>
+                                </svg>
+                            </a>
+                            <a>
+                                <svg width="30.000000" height="30.000000" viewBox="0 0 30 30" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <path
+                                        d="M15 0C6.73 0 0 6.73 0 15C0 23.26 6.73 30 15 30C23.26 30 30 23.26 30 15C30 6.73 23.26 0 15 0ZM15 2.5C21.91 2.5 27.5 8.08 27.5 15C27.5 21.28 22.88 26.45 16.86 27.34L16.86 18.64L20.41 18.64L20.97 15.02L16.86 15.02L16.86 13.05C16.86 11.55 17.35 10.21 18.75 10.21L21.01 10.21L21.01 7.06C20.61 7.01 19.77 6.89 18.19 6.89C14.88 6.89 12.94 8.64 12.94 12.62L12.94 15.02L9.54 15.02L9.54 18.64L12.94 18.64L12.94 27.31C7.01 26.33 2.5 21.21 2.5 15C2.5 8.08 8.08 2.5 15 2.5Z"
+                                        fill="#B9D5FD" fill-opacity="1.000000" fill-rule="nonzero" />
+                                </svg>
+                            </a>
+                            <a>
+                                <svg width="30.000000" height="30.000000" viewBox="0 0 30 30" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <path id="Vector"
+                                        d="M8.93 0.26C4.17 0.26 0.26 4.17 0.26 8.93L0.26 21.06C0.26 25.82 4.17 29.73 8.93 29.73L21.06 29.73C25.82 29.73 29.73 25.82 29.73 21.06L29.73 8.93C29.73 4.17 25.82 0.26 21.06 0.26L8.93 0.26ZM8.93 2.94L21.06 2.94C24.38 2.94 27.05 5.61 27.05 8.93L27.05 21.06C27.05 24.37 24.38 27.05 21.06 27.05L8.93 27.05C5.62 27.05 2.94 24.37 2.94 21.06L2.94 8.93C2.94 5.61 5.62 2.94 8.93 2.94ZM22.91 5.87C22.23 5.87 21.69 6.41 21.69 7.08C21.69 7.76 22.23 8.3 22.91 8.3C23.58 8.3 24.12 7.76 24.12 7.08C24.12 6.41 23.58 5.87 22.91 5.87ZM15 6.96C10.57 6.96 6.96 10.57 6.96 14.99C6.96 19.42 10.57 23.03 15 23.03C19.42 23.03 23.03 19.42 23.03 14.99C23.03 10.57 19.42 6.96 15 6.96ZM15 9.64C17.97 9.64 20.35 12.02 20.35 14.99C20.35 17.97 17.97 20.35 15 20.35C12.02 20.35 9.64 17.97 9.64 14.99C9.64 12.02 12.02 9.64 15 9.64Z"
+                                        fill="#B9D5FD" fill-opacity="1.000000" fill-rule="nonzero" />
+                                </svg>
+                            </a>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+
+    </section>
+</main>

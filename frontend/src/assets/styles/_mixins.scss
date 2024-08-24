@@ -1,0 +1,16 @@
+@import "variables";
+@import "fonts";
+
+@mixin head-montserrat-20 {
+  color: $blue;
+  font-family: $font-montserrat-medium;
+  font-size: 20px;
+  line-height: 130%;
+}
+
+@mixin head-lora-38 {
+  color: $blue;
+  font-family: $font-lora;
+  font-size: 38px;
+  line-height: 130%;
+}

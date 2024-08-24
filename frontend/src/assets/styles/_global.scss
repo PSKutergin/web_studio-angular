@@ -50,11 +50,20 @@ input[type="number"] {
   outline: none;
   font-size: 16px;
   font-family: $font-montserrat;
+  transition: all 0.3s ease;
 
   &.btn-small {
     padding: 10px 20px;
     font-size: 12px;
     font-family: $font-montserrat-medium;
+  }
+
+  &:hover {
+    background-color: #3f80d6;
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 }
 
@@ -69,5 +78,33 @@ input[type="number"] {
 
   &::placeholder {
     color: #a8aba7;
+  }
+}
+
+.owl-theme {
+  .owl-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .owl-dot {
+      span {
+        background: transparent;
+        border: 1px solid $white;
+      }
+
+      &.active {
+        span {
+          background: $white;
+        }
+      }
+
+      &:hover {
+        span {
+          background: #ffffffad;
+        }
+      }
+    }
   }
 }
