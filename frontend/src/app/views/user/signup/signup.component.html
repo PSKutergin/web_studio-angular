@@ -1,10 +1,16 @@
-<section class="signup" [formGroup]="signupForm" passwordRepeat>
+<section class="signup" [formGroup]="signupForm">
     <section class="container">
 
         <form class="auth-form">
             <h1 class="auth-title">Регистрация на сайте</h1>
 
             <section class="auth-inputs">
+                <section class="auth-input">
+                    <input type="text" class="input"
+                        [ngStyle]="{'border-color': fullName?.invalid && (fullName?.touched || fullName?.dirty) ? 'tomato' : ''}"
+                        placeholder="Ваше имя" formControlName="fullName">
+                </section>
+
                 <section class="auth-input">
                     <input type="text" class="input"
                         [ngStyle]="{'border-color': email?.invalid && (email?.touched || email?.dirty) ? 'tomato' : ''}"
@@ -15,12 +21,6 @@
                     <input type="password" class="input"
                         [ngStyle]="{'border-color': password?.invalid && (password?.touched || password?.dirty) ? 'tomato' : ''}"
                         placeholder="Пароль" formControlName="password">
-                </section>
-
-                <section class="auth-input">
-                    <input type="password" class="input"
-                        [ngStyle]="{'border-color': passwordRepeat?.invalid && (passwordRepeat?.touched || passwordRepeat?.dirty) ? 'tomato' : ''}"
-                        placeholder="Повторите пароль" formControlName="passwordRepeat">
                 </section>
 
                 <section class="auth-checkbox">

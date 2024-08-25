@@ -3,5 +3,6 @@
     "source.fixAll.eslint": true
   },
   "editor.formatOnSave": true, // Если вы используете Prettier или другой форматтер
-  "eslint.format.enable": true // Включает поддержку форматирования через ESLint
+  "eslint.format.enable": true, // Включает поддержку форматирования через ESLint
+  "eslint.autoFixOnSave": true // Автоматическое форматирование
 }
