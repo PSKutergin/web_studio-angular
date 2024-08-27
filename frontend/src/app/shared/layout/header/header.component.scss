@@ -10,40 +10,50 @@
   .container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-    .logo {
-      width: 85px;
-      margin-right: 100px;
-    }
+    .header-menu-container {
+      width: min(615px, 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-    .header-menu {
-      margin-right: 257px;
+      .logo {
+        width: 85px;
+      }
 
-      .menu-list {
-        display: flex;
-        align-items: center;
-        gap: 30px;
+      .header-menu {
+        .menu-list {
+          display: flex;
+          align-items: center;
+          gap: 30px;
 
-        li {
-          a {
-            color: $dark-blue;
+          li {
+            a {
+              color: $dark-blue;
+            }
           }
         }
       }
     }
 
-    .phone {
-      color: $blue;
-      margin-right: 141px;
-    }
-
-    .header-btn {
+    .header-info-container {
       display: flex;
       align-items: center;
-      gap: 7px;
-      border: none;
-      outline: none;
-      background: transparent;
+
+      .phone {
+        color: $blue;
+        margin-right: 140px;
+      }
+
+      .header-btn {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        border: none;
+        outline: none;
+        background: transparent;
+      }
     }
   }
 }

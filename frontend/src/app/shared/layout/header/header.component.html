@@ -1,38 +1,41 @@
 <header class="header">
     <section class="container">
-        <a routerLink="/" class="logo">
-            <img src="./assets/images/logo.png" alt="logo">
-        </a>
+        <section class="header-menu-container">
+            <a routerLink="/" class="logo">
+                <img src="./assets/images/logo.png" alt="logo">
+            </a>
 
-        <nav class="header-menu">
-            <ul class="menu-list">
-                <li><a routerLink="/">Услуги</a></li>
-                <li><a routerLink="/about">О нас</a></li>
-                <li><a routerLink="/articles">Статьи</a></li>
-                <li><a routerLink="/reviews">Отзывы</a></li>
-                <li><a routerLink="/contact">Контакты</a></li>
-            </ul>
-        </nav>
+            <nav class="header-menu">
+                <ul class="menu-list">
+                    <li><a routerLink="/">Услуги</a></li>
+                    <li><a routerLink="/about">О нас</a></li>
+                    <li><a routerLink="/articles">Статьи</a></li>
+                    <li><a routerLink="/reviews">Отзывы</a></li>
+                    <li><a routerLink="/contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="header-info-container">
+            <a href="tel:+7 (499) 343-13-34" class="phone">+7 (499) 343-13-34</a>
 
-        <a href="tel:+7 (499) 343-13-34" class="phone">+7 (499) 343-13-34</a>
-
-        <button routerLink="/login" class="header-btn">
-            <svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path id="Vector"
-                    d="M15 22L9 22C7.77 22 6.73 21.88 5.85 21.62C6.08 19.02 8.75 16.96 12 16.96C15.25 16.96 17.91 19.02 18.13 21.62C17.25 21.88 16.21 22 15 22Z"
-                    stroke="#071739" stroke-opacity="1.000000" stroke-width="1.300000" stroke-linejoin="round" />
-                <path
-                    d="M9 2C4 2 2 4 2 9L2 15C2 18.78 3.14 20.85 5.85 21.62C6.08 19.02 8.75 16.96 12 16.96C15.25 16.96 17.91 19.02 18.14 21.62C20.85 20.85 22 18.78 22 15L22 9C22 4 20 2 15 2L9 2ZM8.41 10.58C8.41 8.59 10.02 7 12 7C13.98 7 15.58 8.59 15.58 10.58C15.58 12.56 13.98 14.17 12 14.17C10.02 14.17 8.41 12.56 8.41 10.58Z"
-                    stroke="#071739" stroke-opacity="1.000000" stroke-width="1.300000" stroke-linejoin="round" />
-                <path
-                    d="M12 14.16C10.02 14.16 8.41 12.56 8.41 10.58C8.41 8.59 10.02 7 12 7C13.98 7 15.58 8.59 15.58 10.58C15.58 12.56 13.98 14.16 12 14.16Z"
-                    stroke="#071739" stroke-opacity="1.000000" stroke-width="1.300000" stroke-linejoin="round" />
-            </svg>
-            <span *ngIf="!isLogged">Войти</span>
-            <span *ngIf="isLogged">
-                {{ userInfo?.name }}
-            </span>
-        </button>
+            <button routerLink="/login" class="header-btn">
+                <svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <path id="Vector"
+                        d="M15 22L9 22C7.77 22 6.73 21.88 5.85 21.62C6.08 19.02 8.75 16.96 12 16.96C15.25 16.96 17.91 19.02 18.13 21.62C17.25 21.88 16.21 22 15 22Z"
+                        stroke="#071739" stroke-opacity="1.000000" stroke-width="1.300000" stroke-linejoin="round" />
+                    <path
+                        d="M9 2C4 2 2 4 2 9L2 15C2 18.78 3.14 20.85 5.85 21.62C6.08 19.02 8.75 16.96 12 16.96C15.25 16.96 17.91 19.02 18.14 21.62C20.85 20.85 22 18.78 22 15L22 9C22 4 20 2 15 2L9 2ZM8.41 10.58C8.41 8.59 10.02 7 12 7C13.98 7 15.58 8.59 15.58 10.58C15.58 12.56 13.98 14.17 12 14.17C10.02 14.17 8.41 12.56 8.41 10.58Z"
+                        stroke="#071739" stroke-opacity="1.000000" stroke-width="1.300000" stroke-linejoin="round" />
+                    <path
+                        d="M12 14.16C10.02 14.16 8.41 12.56 8.41 10.58C8.41 8.59 10.02 7 12 7C13.98 7 15.58 8.59 15.58 10.58C15.58 12.56 13.98 14.16 12 14.16Z"
+                        stroke="#071739" stroke-opacity="1.000000" stroke-width="1.300000" stroke-linejoin="round" />
+                </svg>
+                <span *ngIf="!isLogged">Войти</span>
+                <span *ngIf="isLogged">
+                    Привет, {{ userInfo?.name }}!
+                </span>
+            </button>
+        </section>
     </section>
 </header>
