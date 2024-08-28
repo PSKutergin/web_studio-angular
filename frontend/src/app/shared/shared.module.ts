@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from './layout/layout.component';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
+import { ArticleCardComponent } from './components/article-card/article-card.component';
 
 
 
 @NgModule({
   declarations: [
-    LayoutComponent,
-    HeaderComponent,
-    FooterComponent
+    ArticleCardComponent
   ],
   imports: [
     CommonModule,
     RouterModule
+  ],
+  exports: [
+    ArticleCardComponent
   ]
 })
 export class SharedModule { }

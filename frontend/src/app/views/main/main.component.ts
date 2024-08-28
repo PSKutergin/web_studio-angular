@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ArticleService } from 'src/app/shared/services/article.service';
+import { ArticleType } from 'src/app/types/article.type';
 
 @Component({
   selector: 'app-main',
@@ -7,6 +9,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+
+  articles: ArticleType[] = [];
 
   customOptions: OwlOptions = {
     loop: true,
@@ -85,9 +89,13 @@ export class MainComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
+    this.articleService.getTopArticles()
+      .subscribe((data: ArticleType[]) => {
+        this.articles = data;
+      });
   }
 
 }

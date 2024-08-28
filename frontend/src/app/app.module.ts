@@ -10,10 +10,16 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/mater
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/api/interceptor';
+import { LayoutComponent } from './shared/layout/layout.component';
+import { HeaderComponent } from './shared/layout/header/header.component';
+import { FooterComponent } from './shared/layout/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LayoutComponent,
+    HeaderComponent,
+    FooterComponent,
     MainComponent
   ],
   imports: [

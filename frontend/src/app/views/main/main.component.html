@@ -196,69 +196,11 @@
             <section class="articles-title">Популярные статьи из блога</section>
 
             <ul class="articles-list">
-                <li class="articles-item">
-                    <section class="articles-item-img">
-                        <img src="./assets/images/articles/image1.jpg" alt="article-img">
-                    </section>
-                    <section class="articles-item-title">
-                        6 сайтов для повышения продуктивности
-                    </section>
-                    <section class="articles-item-text">
-                        Хотите проводить время в сети с пользой? Наша подборка из шести полезных, но малоизвестных
-                        сайтов увеличит вашу продуктивность, поможет успевать больше в течение дня и всегда быть на шаг
-                        впереди!
-                    </section>
-
-                    <a class="articles-item-link">Читать дальше</a>
-                </li>
-                <li class="articles-item">
-                    <section class="articles-item-img">
-                        <img src="./assets/images/articles/image2.jpg" alt="article-img">
-                    </section>
-                    <section class="articles-item-title">
-                        Как произвести впечатление на нового клиента?
-                    </section>
-                    <section class="articles-item-text">
-                        Поиск новых клиентов — это сложная задача не только для новичков, но и для опытных специалистов.
-                        Мы расскажем, как справиться с волнением, завоевать доверие клиента и произвести на него
-                        потрясающее первое впечатление.
-                    </section>
-
-                    <a class="articles-item-link">Читать дальше</a>
-                </li>
-                <li class="articles-item">
-                    <section class="articles-item-img">
-                        <img src="./assets/images/articles/image3.jpg" alt="article-img">
-                    </section>
-                    <section class="articles-item-title">
-                        Как бороться с конкуренцией на фрилансе?
-                    </section>
-                    <section class="articles-item-text">
-                        Конкуренция — это часть нашей жизни. Мы боремся за место работы, за победу на конкурсе и даже за
-                        возможность купить последний круассан в любимом кафе. Фриланс не исключение.
-                    </section>
-
-                    <a class="articles-item-link">Читать дальше</a>
-                </li>
-                <li class="articles-item">
-                    <section class="articles-item-img">
-                        <img src="./assets/images/articles/image4.jpg" alt="article-img">
-                    </section>
-                    <section class="articles-item-title">
-                        SMM-специалисты: кто они?
-                    </section>
-                    <section class="articles-item-text">
-                        Профессия SММ-менеджера набирает все большую популярность. В эпоху интернета уже не только
-                        новости – приобретение товаров и услуг уходит в онлайн, а просмотр любимых сайтов становится
-                        ежедневной рутиной.
-                    </section>
-
-                    <a class="articles-item-link">Читать дальше</a>
-                </li>
+                <article-card *ngFor="let article of articles" [article]="article"></article-card>
             </ul>
 
             <section class="articles-link">
-                <a>Перейти в блог</a>
+                <a routerLink="/blog">Перейти в блог</a>
                 <svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none">
                     <path
                         d="M5.44 1C5.59 1 5.75 1.05 5.87 1.17L11.18 6.44C12.05 7.29 12.05 8.7 11.18 9.55L5.87 14.82C5.63 15.05 5.24 15.05 5.01 14.82C4.77 14.59 4.77 14.2 5.01 13.96L10.32 8.7C10.71 8.31 10.71 7.68 10.32 7.29L5.01 2.03C4.77 1.79 4.77 1.41 5.01 1.17C5.13 1.06 5.28 1 5.44 1Z"

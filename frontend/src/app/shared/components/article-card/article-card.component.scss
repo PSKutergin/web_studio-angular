@@ -1,0 +1,45 @@
+@import "../../../../assets/styles/_variables.scss";
+@import "../../../../assets/styles/_mixins.scss";
+
+.articles-item {
+  width: 291px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+
+  .articles-item-wrapper {
+    .articles-item-img {
+      width: 100%;
+      height: 291px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .articles-item-title {
+      @include head-montserrat-20;
+      margin-bottom: 20px;
+    }
+
+    .articles-item-text {
+      font-family: $font-montserrat;
+      font-size: 14px;
+      line-height: 130%;
+      color: $dark-blue;
+    }
+  }
+
+  .articles-item-link {
+    color: $blue;
+    font-family: $font-montserrat;
+    font-size: 16px;
+
+    a {
+      border-bottom: 1px solid $blue;
+    }
+  }
+}

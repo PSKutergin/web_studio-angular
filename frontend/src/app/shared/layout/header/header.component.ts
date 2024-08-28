@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isLogged$
       .subscribe((isLogged: boolean) => {
-        console.log('isLogged:', isLogged);
         this.isLogged = isLogged;
 
         if (this.isLogged) {
@@ -29,8 +28,6 @@ export class HeaderComponent implements OnInit {
               if ((data as DefaultResponseType).error !== undefined) {
                 throw new Error((data as DefaultResponseType).message);
               }
-
-              console.log(data);
 
               this.userInfo = data as UserInfoType;
             });

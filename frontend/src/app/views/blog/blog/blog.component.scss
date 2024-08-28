@@ -1,0 +1,54 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+.blog {
+  padding: 80px 0 120px 0;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .blog-title {
+      @include head-lora-38;
+    }
+
+    .blog-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 15px;
+
+      .blog-applied-filters {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+
+        .blog-applied-filter {
+          padding: 8px 20px 8px 20px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          border: 2px solid $blue;
+          border-radius: 5px;
+          background: $white;
+          font-family: $font-montserrat;
+          font-size: 16px;
+          color: $blue;
+
+          a {
+            width: 14px;
+            height: 14px;
+          }
+        }
+      }
+    }
+
+    .blog-articles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px 25px;
+    }
+  }
+}
