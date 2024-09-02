@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  @ViewChild('popup') popup!: TemplateRef<ElementRef>;
+  dialogRef: MatDialogRef<any> | null = null;
+
+  openPopup(): void {
+    this.dialogRef = this.dialog.open(this.popup);
+  }
+
+  closePopup(): void {
+    this.dialogRef?.close();
   }
 
 }

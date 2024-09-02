@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ArticleService } from 'src/app/shared/services/article.service';
+import { CategoryService } from 'src/app/shared/services/category.service';
 import { ArticleType } from 'src/app/types/article.type';
+import { CategoryType } from 'src/app/types/category.type';
 
 @Component({
   selector: 'app-main',
@@ -11,6 +14,7 @@ import { ArticleType } from 'src/app/types/article.type';
 export class MainComponent implements OnInit {
 
   articles: ArticleType[] = [];
+  categories: CategoryType[] = [];
 
   customOptions: OwlOptions = {
     loop: true,
@@ -89,13 +93,29 @@ export class MainComponent implements OnInit {
     }
   ];
 
-  constructor(private articleService: ArticleService) { }
+  @ViewChild('popup') popup!: TemplateRef<ElementRef>;
+  dialogRef: MatDialogRef<any> | null = null;
+
+  constructor(private articleService: ArticleService, private categoryService: CategoryService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.articleService.getTopArticles()
       .subscribe((data: ArticleType[]) => {
         this.articles = data;
       });
+
+    this.categoryService.getCategories()
+      .subscribe((data: CategoryType[]) => {
+        this.categories = data;
+      });
+  }
+
+  openPopup(): void {
+    this.dialogRef = this.dialog.open(this.popup);
+  }
+
+  closePopup(): void {
+    this.dialogRef?.close();
   }
 
 }

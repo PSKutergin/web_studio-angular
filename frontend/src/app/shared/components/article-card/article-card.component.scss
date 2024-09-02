@@ -8,6 +8,7 @@
   flex-direction: column;
   gap: 20px;
   justify-content: space-between;
+  position: relative;
 
   .articles-item-wrapper {
     .articles-item-img {
@@ -26,7 +27,6 @@
     }
 
     .articles-item-text {
-      font-family: $font-montserrat;
       font-size: 14px;
       line-height: 130%;
       color: $dark-blue;
@@ -35,11 +35,21 @@
 
   .articles-item-link {
     color: $blue;
-    font-family: $font-montserrat;
     font-size: 16px;
 
     a {
       border-bottom: 1px solid $blue;
     }
+  }
+
+  .articles-item-category {
+    position: absolute;
+    top: 10px;
+    right: 9px;
+    font-size: 14px;
+    color: $blue;
+    padding: 10px 18px;
+    border-radius: 5px;
+    background-color: $white;
   }
 }

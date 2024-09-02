@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { MainComponent } from './views/main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -25,6 +26,7 @@ import { FooterComponent } from './shared/layout/footer/footer.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    MatDialogModule,
     MatSnackBarModule,
     CarouselModule,
     SharedModule,

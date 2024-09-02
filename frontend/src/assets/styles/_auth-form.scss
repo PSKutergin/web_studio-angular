@@ -2,8 +2,6 @@
 @import "fonts";
 
 .auth-form {
-  font-family: $font-montserrat;
-
   &.auth-form-login {
     margin-top: 14px;
   }
@@ -22,7 +20,7 @@
       margin-bottom: 5px;
 
       input {
-        width: 100%;
+        color: $dark-blue;
       }
     }
 

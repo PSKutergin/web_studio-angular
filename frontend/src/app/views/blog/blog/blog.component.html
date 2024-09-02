@@ -6,7 +6,7 @@
             <section class="blog-applied-filters">
                 <section class="blog-applied-filter" *ngFor="let filter of appliedFilters">
                     <span>{{filter.name}}</span>
-                    <a (click)="removeAppliedFilter(filter)">
+                    <a (click)="removeAppliedFilter(filter.urlParam)">
                         <svg width="14.000000" height="14.225830" viewBox="0 0 14 14.2258" fill="none"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <line id="Line 4" x1="0.581970" y1="0.522217" x2="13.309891" y2="13.250122" stroke="#709FDC"
@@ -18,8 +18,8 @@
                 </section>
             </section>
 
-            <section class="catalog-filter" [class.open]="filtersOpen" (click)="toggleFilters($event)">
-                <section class="catalog-filter-head">
+            <section class="blog-filter" [class.open]="filtersOpen" (click)="toggleFilters($event)">
+                <section class="blog-filter-head">
                     <span>Фильтр</span>
                     <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -28,9 +28,14 @@
                     </svg>
                 </section>
 
-                <section class="catalog-filter-body">
-                    <section class="catalog-sorting-item" *ngFor="let filter of filters">
-                        {{filter.name}}
+                <section class="blog-filter-body">
+                    <section class="blog-filter-item" *ngFor="let filter of filters" (click)="changeFilter(filter)"
+                        [class.active]="this.activeParams.categories && this.activeParams.categories.includes(filter.url)">
+                        <p>{{filter.name}}</p>
+                        <span
+                            *ngIf="!this.activeParams.categories || !this.activeParams.categories.includes(filter.url)">&#43;</span>
+                        <span
+                            *ngIf="this.activeParams.categories && this.activeParams.categories.includes(filter.url)">&#8722;</span>
                     </section>
                 </section>
             </section>
@@ -38,6 +43,30 @@
 
         <section class="blog-articles">
             <article-card *ngFor="let article of articles" [article]="article"></article-card>
+        </section>
+
+        <section class="pagination" *ngIf="pages.length > 1">
+            <section class="pagination-arrow" (click)="openPrevPage()">
+                <img *ngIf="activeParams.page && +activeParams.page !== 1" src="./assets/images/arrow-active.png"
+                    alt="arrow" class="transform">
+                <img *ngIf="!activeParams.page || +activeParams.page === 1" src="./assets/images/arrow-disabled.png"
+                    alt="arrow">
+            </section>
+
+            <section class="pagination-pages">
+                <a class="pagination-page"
+                    [class.active]="this.activeParams.page ? +this.activeParams.page === +page : (+page === 1)"
+                    (click)="openPage(page)" *ngFor="let page of pages">
+                    {{page}}
+                </a>
+            </section>
+
+            <section class="pagination-arrow" (click)="openNextPage()">
+                <img *ngIf="activeParams.page && +activeParams.page !== pages.length"
+                    src="./assets/images/arrow-active.png" alt="arrow">
+                <img *ngIf="!activeParams.page || +activeParams.page === pages.length"
+                    src="./assets/images/arrow-disabled.png" alt="arrow" class="transform">
+            </section>
         </section>
 
     </section>

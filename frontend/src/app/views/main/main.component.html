@@ -10,7 +10,7 @@
                             <section class="slider-item-title">
                                 Продвижение в Instagram для вашего бизнеса <span>-15%</span>!
                             </section>
-                            <button class="button slider-item-button">Подробнее</button>
+                            <button class="button slider-item-button" (click)="openPopup()">Подробнее</button>
                         </section>
                         <section class="slider-item-img">
                             <img src="./assets/images/main/slider1.png" alt="slider-img">
@@ -28,7 +28,7 @@
                             <section class="slider-item-text">
                                 Весь декабрь у нас действует акция на работу копирайтера.
                             </section>
-                            <button class="button slider-item-button">Подробнее</button>
+                            <button class="button slider-item-button" (click)="openPopup()">Подробнее</button>
                         </section>
                         <section class="slider-item-img">
                             <img src="./assets/images/main/slider2.png" alt="slider-img">
@@ -46,7 +46,7 @@
                             <section class="slider-item-text">
                                 Мы благодарим каждого, кто голосовал за нас!
                             </section>
-                            <button class="button slider-item-button">Подробнее</button>
+                            <button class="button slider-item-button" (click)="openPopup()">Подробнее</button>
                         </section>
                         <section class="slider-item-img">
                             <img src="./assets/images/main/slider3.png" alt="slider-img">
@@ -81,7 +81,7 @@
                     </section>
                     <section class="services-item-extra">
                         <section class="services-item-price">От 7 500₽</section>
-                        <button class="button">Подробнее</button>
+                        <button class="button" (click)="openPopup()">Подробнее</button>
                     </section>
                 </li>
                 <li class="services-item">
@@ -95,7 +95,7 @@
                     </section>
                     <section class="services-item-extra">
                         <section class="services-item-price">От 3 500₽</section>
-                        <button class="button">Подробнее</button>
+                        <button class="button" (click)="openPopup()">Подробнее</button>
                     </section>
                 </li>
                 <li class="services-item">
@@ -109,7 +109,7 @@
                     </section>
                     <section class="services-item-extra">
                         <section class="services-item-price">От 1 000₽</section>
-                        <button class="button">Подробнее</button>
+                        <button class="button" (click)="openPopup()">Подробнее</button>
                     </section>
                 </li>
                 <li class="services-item">
@@ -123,7 +123,7 @@
                     </section>
                     <section class="services-item-extra">
                         <section class="services-item-price">От 750₽</section>
-                        <button class="button">Подробнее</button>
+                        <button class="button" (click)="openPopup()">Подробнее</button>
                     </section>
                 </li>
             </ul>
@@ -317,3 +317,30 @@
 
     </section>
 </main>
+
+<ng-template #popup>
+    <section class="popup">
+        <section class="popup-content">
+            <section class="popup-title">Заявка на услугу</section>
+            <section class="popup-select">
+                <select class="select">
+                    <option *ngFor="let category of categories">{{category.name}}</option>
+                </select>
+            </section>
+            <section class="popup-input">
+                <input type="text" class="input" placeholder="Ваше имя">
+            </section>
+            <section class="popup-input">
+                <input type="text" class="input" placeholder="Ваш номер телефона">
+            </section>
+            <button class="button popup-button">Оставить заявку</button>
+        </section>
+
+        <section class="popup-close" (click)="closePopup()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0.935622" y1="0.649902" x2="12.9564" y2="12.6707" stroke="#A8ABA7" stroke-linecap="round" />
+                <line x1="12.9238" y1="0.629714" x2="0.903013" y2="12.6505" stroke="#A8ABA7" stroke-linecap="round" />
+            </svg>
+        </section>
+    </section>
+</ng-template>

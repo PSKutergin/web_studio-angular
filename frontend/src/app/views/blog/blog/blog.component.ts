@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
+import { ActiveParamsType } from 'src/app/types/active-params.type';
+import { AppliedFilterType } from 'src/app/types/applied-filter.type';
 import { ArticleType } from 'src/app/types/article.type';
 import { CategoryType } from 'src/app/types/category.type';
+import { ActiveParamsUtil } from 'src/app/utils/active-params.util';
 
 @Component({
   selector: 'app-blog',
@@ -11,54 +15,56 @@ import { CategoryType } from 'src/app/types/category.type';
 })
 export class BlogComponent implements OnInit {
 
+  activeParams: ActiveParamsType = { categories: [], page: 1 };
   articles: ArticleType[] = []
   filtersOpen: boolean = false;
-  page: number = 2;
+  pages: number[] = [];
   filters: CategoryType[] = [];
-  appliedFilters: CategoryType[] = [
-    {
-      "id": "66cb98ed8e8cef82eb34e22a",
-      "name": "Фриланс",
-      "url": "frilans"
-    },
-    {
-      "id": "66cb98ed8e8cef82eb34e22b",
-      "name": "Дизайн",
-      "url": "dizain"
-    },
-    {
-      "id": "66cb98ed8e8cef82eb34e22c",
-      "name": "SMM",
-      "url": "smm"
-    },
-    {
-      "id": "66cb98ed8e8cef82eb34e22d",
-      "name": "Таргет",
-      "url": "target"
-    },
-    {
-      "id": "66cb98ed8e8cef82eb34e22e",
-      "name": "Копирайтинг",
-      "url": "kopiraiting"
-    }
-  ];
+  appliedFilters: AppliedFilterType[] = [];
 
-  constructor(private articleService: ArticleService, private categoryService: CategoryService) { }
+  constructor(
+    private elementRef: ElementRef,
+    private articleService: ArticleService,
+    private categoryService: CategoryService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
     this.categoryService.getCategories()
       .subscribe((data: CategoryType[]) => {
         this.filters = data;
-      });
 
-    this.articleService.getArticles({
-      page: this.page,
-      categories: this.appliedFilters.map(item => item.url)
-    })
-      .subscribe((data: { count: number, pages: number, items: ArticleType[] }) => {
-        this.articles = data.items;
-      });
+        this.activatedRoute.queryParams
+          .subscribe((params) => {
+            console.log('params', params);
 
+            this.activeParams = ActiveParamsUtil.processParams(params as ActiveParamsType);
+
+            console.log('activeParams', this.activeParams);
+
+            this.appliedFilters = [];
+            this.activeParams.categories.forEach((url) => {
+              const foundCategory = this.filters.find((category) => category.url === url);
+              if (foundCategory) {
+                this.appliedFilters.push({
+                  name: foundCategory.name,
+                  urlParam: foundCategory.url
+                });
+              }
+            });
+
+            this.articleService.getArticles(this.activeParams)
+              .subscribe((data: { count: number, pages: number, items: ArticleType[] }) => {
+                this.pages = [];
+                for (let i = 1; i <= data.pages; i++) {
+                  this.pages.push(i);
+                }
+
+                this.articles = data.items;
+              });
+          })
+      });
   }
 
   toggleFilters(event: Event): void {
@@ -66,8 +72,56 @@ export class BlogComponent implements OnInit {
     event.stopPropagation();
   }
 
-  removeAppliedFilter(filter: CategoryType): void {
-    this.appliedFilters = this.appliedFilters.filter((item: CategoryType) => item !== filter);
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent): void {
+    const targetElement = event.target as HTMLElement;
+
+    if (!this.elementRef.nativeElement.contains(targetElement)) {
+      this.filtersOpen = false;
+    }
+  }
+
+  changeFilter(filter: CategoryType): void {
+
+    if (this.activeParams.categories && this.activeParams.categories.includes(filter.url)) {
+      this.removeAppliedFilter(filter.url);
+    } else {
+      this.activeParams.categories.push(filter.url);
+    }
+
+    this.activeParams.page = 1;
+    this.router.navigate(['/blog'], { queryParams: this.activeParams });
+  }
+
+
+  removeAppliedFilter(urlParam: string): void {
+    this.activeParams.categories = this.activeParams.categories.filter((category) => category !== urlParam);
+
+    this.activeParams.page = 1;
+    this.router.navigate(['/blog'], { queryParams: this.activeParams });
+  }
+
+  openPage(page: number): void {
+    this.activeParams.page = page;
+    this.router.navigate(['/blog'], { queryParams: this.activeParams });
+  }
+
+  openPrevPage(): void {
+    if (this.activeParams.page && this.activeParams.page > 1) {
+      this.activeParams.page--;
+      this.router.navigate(['/blog'], { queryParams: this.activeParams });
+    }
+  }
+
+  openNextPage(): void {
+    if (this.activeParams.page) {
+      if (this.activeParams.page && this.activeParams.page < this.pages.length) {
+        this.activeParams.page++;
+        this.router.navigate(['/blog'], { queryParams: this.activeParams });
+      }
+    } else {
+      this.router.navigate(['/blog'], { queryParams: this.activeParams });
+    }
   }
 
 }

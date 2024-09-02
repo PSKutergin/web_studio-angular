@@ -1,0 +1,35 @@
+.popup {
+  padding: 70px 128px 62px;
+  position: relative;
+
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 422px;
+
+    .popup-title {
+      @include head-lora-38;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .popup-button {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .popup-input {
+      input {
+        color: $blue;
+      }
+    }
+  }
+
+  .popup-close {
+    position: absolute;
+    cursor: pointer;
+    top: 6px;
+    right: 6px;
+  }
+}

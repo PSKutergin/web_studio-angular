@@ -1,5 +1,6 @@
 @import "../../../assets/styles/variables";
 @import "../../../assets/styles/mixins";
+@import "../../../assets/styles/popup";
 
 .main {
   padding-bottom: 120px;
@@ -68,7 +69,6 @@
             max-width: 456px;
             margin-top: 20px;
             margin-bottom: 10px;
-            font-family: $font-montserrat;
             font-size: 24px;
             line-height: 130%;
             color: $white;
@@ -132,7 +132,6 @@
           }
 
           .services-item-text {
-            font-family: $font-montserrat;
             font-size: 14px;
             line-height: 130%;
             color: $dark-blue;
@@ -172,7 +171,6 @@
 
         .about-text {
           max-width: 633px;
-          font-family: $font-montserrat;
           font-size: 14px;
           line-height: 130%;
           margin-bottom: 40px;
@@ -220,7 +218,6 @@
               }
 
               .about-advantages-item-text {
-                font-family: $font-montserrat;
                 font-size: 14px;
                 line-height: 130%;
 
@@ -299,7 +296,6 @@
 
           .reviews-item-text {
             margin-top: 15px;
-            font-family: $font-montserrat;
             font-size: 16px;
             line-height: 140%;
             color: $dark-blue;
@@ -361,7 +357,6 @@
             }
 
             .contact-item-info {
-              font-family: $font-montserrat;
               font-size: 14px;
               line-height: 130%;
               color: $dark-blue;

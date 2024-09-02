@@ -67,18 +67,27 @@ input[type="number"] {
   }
 }
 
-.input {
+.input,
+.select {
+  width: 100%;
   padding: 20px;
   border: 2px solid $blue;
   border-radius: 3px;
   font-family: $font-montserrat;
   font-size: 14px;
-  color: $dark-blue;
   outline: none;
 
   &::placeholder {
     color: #a8aba7;
   }
+}
+
+.select {
+  color: $blue;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
 }
 
 .owl-theme {

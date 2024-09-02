@@ -27,7 +27,7 @@
                 <section class="contact-info">
                     <a href="tel:+7 (499) 343-13-34">+7 (499) 343-13-34</a>
                 </section>
-                <button class="button btn-small">Перезвоните мне</button>
+                <button class="button btn-small" (click)="openPopup()">Перезвоните мне</button>
             </section>
 
             <section class="footer-contact-item">
@@ -73,3 +73,25 @@
         </section>
     </section>
 </footer>
+
+<ng-template #popup>
+    <section class="popup">
+        <section class="popup-content">
+            <section class="popup-title">Закажите бесплатную консультацию!</section>
+            <section class="popup-input">
+                <input type="text" class="input" placeholder="Ваше имя">
+            </section>
+            <section class="popup-input">
+                <input type="text" class="input" placeholder="Ваш номер телефона">
+            </section>
+            <button class="button popup-button">Заказать консультацию</button>
+        </section>
+
+        <section class="popup-close" (click)="closePopup()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0.935622" y1="0.649902" x2="12.9564" y2="12.6707" stroke="#A8ABA7" stroke-linecap="round" />
+                <line x1="12.9238" y1="0.629714" x2="0.903013" y2="12.6505" stroke="#A8ABA7" stroke-linecap="round" />
+            </svg>
+        </section>
+    </section>
+</ng-template>
