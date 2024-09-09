@@ -72,7 +72,7 @@ export class BlogComponent implements OnInit {
   onClickOutside(event: MouseEvent): void {
     const targetElement = event.target as HTMLElement;
 
-    if (!this.elementRef.nativeElement.contains(targetElement)) {
+    if (this.elementRef.nativeElement.contains(targetElement)) {
       this.filtersOpen = false;
     }
   }
