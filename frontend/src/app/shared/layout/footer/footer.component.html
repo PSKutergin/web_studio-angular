@@ -76,15 +76,27 @@
 
 <ng-template #popup>
     <section class="popup">
-        <section class="popup-content">
+        <section class="popup-content" [formGroup]="orderForm" *ngIf="!successOrder">
             <section class="popup-title">Закажите бесплатную консультацию!</section>
             <section class="popup-input">
-                <input type="text" class="input" placeholder="Ваше имя">
+                <input type="text" class="input" placeholder="Ваше имя"
+                    [ngStyle]="{'border-color': name?.invalid && (name?.touched || name?.dirty) ? 'tomato' : ''}"
+                    formControlName="name">
             </section>
             <section class="popup-input">
-                <input type="text" class="input" placeholder="Ваш номер телефона">
+                <input id="tel" type="text" class="input" phoneMask placeholder="Ваш номер телефона"
+                    [ngStyle]="{'border-color': phone?.invalid && (phone?.touched || phone?.dirty) ? 'tomato' : ''}"
+                    formControlName="phone" />
             </section>
-            <button class="button popup-button">Заказать консультацию</button>
+            <button class="button popup-button" (click)="sendOrder()">Заказать консультацию</button>
+        </section>
+
+        <section class="popup-content success" *ngIf="successOrder">
+            <section class="popup-title">Спасибо за вашу заявку!</section>
+            <section class="popup-text">
+                Мы свяжемся с вами при первой же возможности.
+            </section>
+            <button class="button btn-small popup-button-success" (click)="closePopup()">Окей</button>
         </section>
 
         <section class="popup-close" (click)="closePopup()">

@@ -10,7 +10,7 @@
                             <section class="slider-item-title">
                                 Продвижение в Instagram для вашего бизнеса <span>-15%</span>!
                             </section>
-                            <button class="button slider-item-button" (click)="openPopup()">Подробнее</button>
+                            <button class="button slider-item-button" (click)="openPopup('target')">Подробнее</button>
                         </section>
                         <section class="slider-item-img">
                             <img src="./assets/images/main/slider1.png" alt="slider-img">
@@ -28,7 +28,8 @@
                             <section class="slider-item-text">
                                 Весь декабрь у нас действует акция на работу копирайтера.
                             </section>
-                            <button class="button slider-item-button" (click)="openPopup()">Подробнее</button>
+                            <button class="button slider-item-button"
+                                (click)="openPopup('kopiraiting')">Подробнее</button>
                         </section>
                         <section class="slider-item-img">
                             <img src="./assets/images/main/slider2.png" alt="slider-img">
@@ -46,7 +47,7 @@
                             <section class="slider-item-text">
                                 Мы благодарим каждого, кто голосовал за нас!
                             </section>
-                            <button class="button slider-item-button" (click)="openPopup()">Подробнее</button>
+                            <button class="button slider-item-button" (click)="openPopup('smm')">Подробнее</button>
                         </section>
                         <section class="slider-item-img">
                             <img src="./assets/images/main/slider3.png" alt="slider-img">
@@ -81,7 +82,7 @@
                     </section>
                     <section class="services-item-extra">
                         <section class="services-item-price">От 7 500₽</section>
-                        <button class="button" (click)="openPopup()">Подробнее</button>
+                        <button class="button" (click)="openPopup('dizain')">Подробнее</button>
                     </section>
                 </li>
                 <li class="services-item">
@@ -95,7 +96,7 @@
                     </section>
                     <section class="services-item-extra">
                         <section class="services-item-price">От 3 500₽</section>
-                        <button class="button" (click)="openPopup()">Подробнее</button>
+                        <button class="button" (click)="openPopup('smm')">Подробнее</button>
                     </section>
                 </li>
                 <li class="services-item">
@@ -109,7 +110,7 @@
                     </section>
                     <section class="services-item-extra">
                         <section class="services-item-price">От 1 000₽</section>
-                        <button class="button" (click)="openPopup()">Подробнее</button>
+                        <button class="button" (click)="openPopup('target')">Подробнее</button>
                     </section>
                 </li>
                 <li class="services-item">
@@ -123,7 +124,7 @@
                     </section>
                     <section class="services-item-extra">
                         <section class="services-item-price">От 750₽</section>
-                        <button class="button" (click)="openPopup()">Подробнее</button>
+                        <button class="button" (click)="openPopup('kopiraiting')">Подробнее</button>
                     </section>
                 </li>
             </ul>
@@ -320,20 +321,32 @@
 
 <ng-template #popup>
     <section class="popup">
-        <section class="popup-content">
+        <section class="popup-content" [formGroup]="orderForm" *ngIf="!successOrder">
             <section class="popup-title">Заявка на услугу</section>
             <section class="popup-select">
-                <select class="select">
-                    <option *ngFor="let category of categories">{{category.name}}</option>
+                <select class="select" formControlName="service">
+                    <option *ngFor="let category of categories" value="{{category.url}}">{{category.name}}</option>
                 </select>
             </section>
             <section class="popup-input">
-                <input type="text" class="input" placeholder="Ваше имя">
+                <input type="text" class="input" placeholder="Ваше имя"
+                    [ngStyle]="{'border-color': name?.invalid && (name?.touched || name?.dirty) ? 'tomato' : ''}"
+                    formControlName="name">
             </section>
             <section class="popup-input">
-                <input type="text" class="input" placeholder="Ваш номер телефона">
+                <input id="tel" type="text" class="input" phoneMask placeholder="Ваш номер телефона"
+                    [ngStyle]="{'border-color': phone?.invalid && (phone?.touched || phone?.dirty) ? 'tomato' : ''}"
+                    formControlName="phone" />
             </section>
-            <button class="button popup-button">Оставить заявку</button>
+            <button class="button popup-button" (click)="sendOrder()">Оставить заявку</button>
+        </section>
+
+        <section class="popup-content success" *ngIf="successOrder">
+            <section class="popup-title">Спасибо за вашу заявку!</section>
+            <section class="popup-text">
+                Мы свяжемся с вами при первой же возможности.
+            </section>
+            <button class="button btn-small popup-button-success" (click)="closePopup()">Окей</button>
         </section>
 
         <section class="popup-close" (click)="closePopup()">
@@ -341,6 +354,10 @@
                 <line x1="0.935622" y1="0.649902" x2="12.9564" y2="12.6707" stroke="#A8ABA7" stroke-linecap="round" />
                 <line x1="12.9238" y1="0.629714" x2="0.903013" y2="12.6505" stroke="#A8ABA7" stroke-linecap="round" />
             </svg>
+        </section>
+
+        <section class="popup-error" *ngIf="errorOrder">
+            Произошла ошибка при отправке формы, попробуйте еще раз!
         </section>
     </section>
 </ng-template>

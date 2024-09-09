@@ -1,10 +1,15 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
+import { RequestService } from 'src/app/shared/services/request.service';
 import { ArticleType } from 'src/app/types/article.type';
 import { CategoryType } from 'src/app/types/category.type';
+import { DefaultResponseType } from 'src/app/types/default-response.type';
+import { RequestType } from 'src/app/types/request.type';
 
 @Component({
   selector: 'app-main',
@@ -15,6 +20,8 @@ export class MainComponent implements OnInit {
 
   articles: ArticleType[] = [];
   categories: CategoryType[] = [];
+  successOrder: boolean = false;
+  errorOrder: boolean = false;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -96,7 +103,20 @@ export class MainComponent implements OnInit {
   @ViewChild('popup') popup!: TemplateRef<ElementRef>;
   dialogRef: MatDialogRef<any> | null = null;
 
-  constructor(private articleService: ArticleService, private categoryService: CategoryService, private dialog: MatDialog) { }
+  orderForm = this.fb.group({
+    service: ['', [Validators.required]],
+    name: ['', [Validators.required]],
+    phone: ['', [Validators.required, Validators.pattern(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/)]],
+  });
+
+  constructor(
+    private fb: FormBuilder,
+    private articleService: ArticleService,
+    private categoryService: CategoryService,
+    private requestService: RequestService,
+    private _snackBar: MatSnackBar,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.articleService.getTopArticles()
@@ -110,12 +130,55 @@ export class MainComponent implements OnInit {
       });
   }
 
-  openPopup(): void {
+  get service() {
+    return this.orderForm.get('service');
+  }
+
+  get name() {
+    return this.orderForm.get('name');
+  }
+
+  get phone() {
+    return this.orderForm.get('phone');
+  }
+
+  openPopup(service: string): void {
+    this.orderForm.get('service')?.setValue(service);
     this.dialogRef = this.dialog.open(this.popup);
   }
 
   closePopup(): void {
     this.dialogRef?.close();
+    this.orderForm.reset();
+    this.successOrder = false;
+    this.errorOrder = false;
   }
 
+  sendOrder(): void {
+    if (this.orderForm.valid) {
+      const requestData = {
+        ...this.orderForm.value,
+        type: 'order'
+      };
+
+      this.requestService.createNewRequest(requestData as RequestType)
+        .subscribe({
+          next: (data: DefaultResponseType) => {
+            if (!data.error) {
+              this.successOrder = true;
+            } else {
+              this.errorOrder = true;
+              this._snackBar.open(data.message);
+            }
+          },
+          error: (error) => {
+            this.errorOrder = true;
+            this._snackBar.open('Произошла ошибка');
+          }
+        });
+    } else {
+      this.orderForm.markAllAsTouched();
+      this._snackBar.open('Заполните все обязательные поля');
+    }
+  }
 }
