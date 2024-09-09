@@ -94,17 +94,30 @@ export class ArticleComponent implements OnInit {
   addActionToComment(commentId: string, action: string): void {
     if (this.isLogged) {
       this.commentService.addNewCommentAction({ commentId, action })
-        .subscribe((data: DefaultResponseType) => {
-          if (!data.error) {
-            this.comments.map(comment => {
-              if (comment.id === commentId) {
-                comment.userAction = action
-                action === 'like' ? comment.likesCount++ : comment.likesCount--;
-                action === 'like' ? comment.dislikesCount-- : comment.dislikesCount++;
-              };
-            })
+        .subscribe({
+          next: (data: DefaultResponseType) => {
+            if (!data.error) {
+              if (action === 'like' || action === 'dislike') {
+                this.comments.map(comment => {
+                  if (comment.id === commentId && !comment.userAction) {
+                    if (action === 'like') comment.likesCount++;
+                    if (action === 'dislike') comment.dislikesCount++;
+                  } else if (comment.id === commentId && comment.userAction && action !== comment.userAction) {
+                    action === 'like' ? comment.likesCount++ : comment.likesCount--;
+                    action === 'like' ? comment.dislikesCount-- : comment.dislikesCount++;
+                  }
+                  comment.userAction = action
+                })
+                this._snackBar.open('Ваш голос учтен');
+              } else {
+                this._snackBar.open('Жалоба отправлена');
+              }
+            }
+          },
+          error: (error) => {
+            if (error.status === 400) this._snackBar.open('Жалоба уже отправлена');
+            else this._snackBar.open('Произошла ошибка');
           }
-          this._snackBar.open(data.message);
         })
     }
   }
