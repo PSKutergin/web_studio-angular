@@ -7,13 +7,26 @@
 
             <nav class="header-menu">
                 <ul class="menu-list">
-                    <li><a routerLink="/">Услуги</a></li>
-                    <li><a routerLink="/about">О нас</a></li>
-                    <li><a routerLink="/articles">Статьи</a></li>
-                    <li><a routerLink="/reviews">Отзывы</a></li>
-                    <li><a routerLink="/contact">Контакты</a></li>
+                    <li>
+                        <a routerLink="/" fragment="services">Услуги</a>
+                    </li>
+                    <li>
+                        <a routerLink="/" fragment="about">О нас</a>
+                    </li>
+                    <li>
+                        <a routerLink="/blog" routerLinkActive="active" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Статьи</a>
+                    </li>
+                    <li>
+                        <a routerLink="/" fragment="reviews">Отзывы</a>
+                    </li>
+                    <li>
+                        <a routerLink="/" fragment="contacts">Контакты</a>
+                    </li>
                 </ul>
             </nav>
+
+
         </section>
         <section class="header-info-container">
             <a href="tel:+7 (499) 343-13-34" class="phone">+7 (499) 343-13-34</a>

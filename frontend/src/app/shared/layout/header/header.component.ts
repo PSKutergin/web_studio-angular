@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
     if (this.isProfileVisible) {
       setTimeout(() => {
         const btnWidth = this.headerBtn.nativeElement.offsetWidth;
-        this.headerProfile.nativeElement.style.width = `${btnWidth}px`;
+        this.headerProfile.nativeElement.style.minWidth = `${btnWidth}px`;
       }, 0);
     }
 
