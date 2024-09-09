@@ -120,4 +120,23 @@ export class BlogComponent implements OnInit {
     }
   }
 
+  getVisiblePages(): number[] {
+    const totalPages = this.pages.length;
+    const currentPage = this.activeParams.page;
+    const visiblePages: number[] = [];
+
+    if (currentPage > 1) {
+      visiblePages.push(currentPage - 1);
+    }
+
+    visiblePages.push(currentPage);
+
+    if (currentPage < totalPages) {
+      visiblePages.push(currentPage + 1);
+    }
+
+    return visiblePages;
+  }
+
+
 }
