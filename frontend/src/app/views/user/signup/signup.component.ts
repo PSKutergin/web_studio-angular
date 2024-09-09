@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { DefaultResponseType } from 'src/app/types/default-response.type';
 import { LoginResponseType } from 'src/app/types/login-response.type';
+import { nameValidator } from 'src/app/utils/name-validator';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ import { LoginResponseType } from 'src/app/types/login-response.type';
 export class SignupComponent implements OnInit {
 
   signupForm = this.fb.group({
-    fullName: ['', [Validators.required]],
+    fullName: ['', [Validators.required, nameValidator()]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)]],
     agree: [false, [Validators.requiredTrue]]
@@ -27,7 +28,7 @@ export class SignupComponent implements OnInit {
   }
 
   get fullName() {
-    return this.signupForm.get('passwordRepeat');
+    return this.signupForm.get('fullName');
   }
 
   get email() {

@@ -8,7 +8,7 @@
                 <section class="auth-input">
                     <input type="text" class="input"
                         [ngStyle]="{'border-color': fullName?.invalid && (fullName?.touched || fullName?.dirty) ? 'tomato' : ''}"
-                        placeholder="Ваше имя" formControlName="fullName">
+                        placeholder="Ваше имя" formControlName="fullName" nameValidation>
                 </section>
 
                 <section class="auth-input">

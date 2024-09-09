@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import { PhoneMaskDirective } from './directives/phone-mask.directive';
+import { NameValidationDirective } from './directives/name-validation.directive';
 
 @NgModule({
   declarations: [
     ArticleCardComponent,
     PhoneMaskDirective,
+    NameValidationDirective,
   ],
   imports: [
     CommonModule,
@@ -15,6 +17,7 @@ import { PhoneMaskDirective } from './directives/phone-mask.directive';
   ],
   exports: [
     PhoneMaskDirective,
+    NameValidationDirective,
     ArticleCardComponent
   ]
 })
