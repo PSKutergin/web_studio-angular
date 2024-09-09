@@ -136,6 +136,10 @@
         .transform {
           transform: rotate(180deg);
         }
+
+        &.disabled {
+          cursor: default;
+        }
       }
 
       .pagination-pages {

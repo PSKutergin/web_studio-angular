@@ -37,11 +37,7 @@ export class BlogComponent implements OnInit {
 
         this.activatedRoute.queryParams
           .subscribe((params) => {
-            console.log('params', params);
-
             this.activeParams = ActiveParamsUtil.processParams(params as ActiveParamsType);
-
-            console.log('activeParams', this.activeParams);
 
             this.appliedFilters = [];
             this.activeParams.categories.forEach((url) => {
@@ -83,10 +79,10 @@ export class BlogComponent implements OnInit {
 
   changeFilter(filter: CategoryType): void {
 
-    if (this.activeParams.categories && this.activeParams.categories.includes(filter.url)) {
+    if (this.activeParams.categories.includes(filter.url)) {
       this.removeAppliedFilter(filter.url);
     } else {
-      this.activeParams.categories.push(filter.url);
+      this.activeParams.categories = [...this.activeParams.categories, filter.url];
     }
 
     this.activeParams.page = 1;

@@ -46,7 +46,8 @@
         </section>
 
         <section class="pagination" *ngIf="pages.length > 1">
-            <section class="pagination-arrow" (click)="openPrevPage()">
+            <section class="pagination-arrow" (click)="openPrevPage()"
+                [class]="{disabled: !activeParams.page || +activeParams.page === 1}">
                 <img *ngIf="activeParams.page && +activeParams.page !== 1" src="./assets/images/arrow-active.png"
                     alt="arrow" class="transform">
                 <img *ngIf="!activeParams.page || +activeParams.page === 1" src="./assets/images/arrow-disabled.png"
@@ -61,7 +62,8 @@
                 </a>
             </section>
 
-            <section class="pagination-arrow" (click)="openNextPage()">
+            <section class="pagination-arrow" (click)="openNextPage()"
+                [class]="{disabled: !activeParams.page || +activeParams.page === pages.length}">
                 <img *ngIf="activeParams.page && +activeParams.page !== pages.length"
                     src="./assets/images/arrow-active.png" alt="arrow">
                 <img *ngIf="!activeParams.page || +activeParams.page === pages.length"

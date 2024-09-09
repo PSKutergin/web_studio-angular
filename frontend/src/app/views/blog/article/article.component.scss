@@ -99,7 +99,7 @@
     }
 
     .article-comments {
-      max-width: 818px;
+      max-width: 854px;
 
       .article-comments-title {
         @include head-lora-38;
@@ -120,6 +120,7 @@
       }
 
       .article-comments-form {
+        max-width: 818px;
         margin-top: 40px;
         display: flex;
         flex-direction: column;
@@ -130,13 +131,13 @@
           outline: none;
           width: 100%;
           height: 248px;
+          font-family: $font-montserrat;
           padding: 20px 64px 20px 20px;
           box-sizing: border-box;
           border: 2px solid $blue;
           border-radius: 3px;
 
           &::placeholder {
-            font-family: $font-montserrat;
             color: #a8aba7;
             font-size: 14px;
           }
@@ -145,6 +146,90 @@
         .article-comments-form-btn {
           width: 422px;
         }
+      }
+
+      .article-comments-list {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 60px;
+
+        .article-comments-item {
+          .article-comments-item-head {
+            display: flex;
+            align-items: flex-start;
+            gap: 26px;
+            margin-bottom: 15px;
+
+            .article-comments-item-head-img {
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              background-color: $light-blue;
+              border: 2px solid $blue;
+
+              img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+
+            .article-comments-item-head-info {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+
+              .article-comments-item-head-info-name {
+                font-family: $font-montserrat-semi-bold;
+                font-size: 18px;
+                color: $blue;
+              }
+
+              .article-comments-item-head-info-date {
+                font-size: 14px;
+                color: #bebebe;
+              }
+            }
+          }
+
+          .article-comments-item-body {
+            font-size: 14px;
+            line-height: 140%;
+            color: $dark-blue;
+            margin-bottom: 39px;
+            white-space: pre-line;
+          }
+
+          .article-comments-item-action {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            a {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 3px;
+
+              color: $dark-blue;
+              font-family: $font-montserrat-medium;
+
+              &.action {
+                color: $blue;
+              }
+            }
+          }
+        }
+      }
+
+      .article-comments-load {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 60px;
+
+        color: $blue;
+        font-family: $font-montserrat-medium;
       }
     }
   }

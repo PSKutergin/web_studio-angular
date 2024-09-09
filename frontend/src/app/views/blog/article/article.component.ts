@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { ArticleService } from 'src/app/shared/services/article.service';
+import { CommentService } from 'src/app/shared/services/comment.service';
 import { ArticleType } from 'src/app/types/article.type';
+import { CommentType } from 'src/app/types/comment.type';
+import { DefaultResponseType } from 'src/app/types/default-response.type';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,21 +17,95 @@ import { environment } from 'src/environments/environment';
 export class ArticleComponent implements OnInit {
 
   article!: ArticleType;
+  comments: CommentType[] = [];
+  offset: number = 3;
   serverStaticPath = environment.serverStaticPath;
   isLogged: boolean = false;
   commentText: string = '';
 
-  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private articleService: ArticleService) { }
+  constructor(
+    private authService: AuthService,
+    private activatedRoute: ActivatedRoute,
+    private articleService: ArticleService,
+    private commentService: CommentService,
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.isLogged = this.authService.getIsLoggedIn();
+    this.loadArticle();
+  }
 
+  loadArticle(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.articleService.getArticle(params['url'])
         .subscribe((data: ArticleType) => {
           this.article = data;
+          this.comments = data.comments ? data.comments : [];
+
+          this.offset > 3 ? this.loadMoreComments() : this.proccesedComment();
         })
     })
   }
 
+  proccesedComment(): void {
+    if (this.isLogged) {
+      this.commentService.getArticleCommentActionsForUser(this.article.id)
+        .subscribe((data: { comment: string, action: string }[]) => {
+          if (data.length) {
+            data.forEach(item => {
+              this.comments.map(comment => {
+                if (comment.id === item.comment) {
+                  comment.userAction = item.action;
+                }
+              })
+            })
+          }
+        })
+    }
+  }
+
+  loadMoreComments(): void {
+    this.commentService.getCommentsByArticle({ article: this.article.id, offset: this.offset })
+      .subscribe((data: { allCount: number, comments: CommentType[] }) => {
+        this.comments = this.comments.concat(data.comments);
+
+        if (this.comments.length < data.allCount && this.offset + 10 < data.allCount) this.offset += 10;
+        else this.offset = data.allCount;
+
+        this.proccesedComment();
+      })
+  }
+
+  addComment(): void {
+    if (this.commentText) {
+      this.commentService.addNewComment({ article: this.article.id, text: this.commentText })
+        .subscribe((data: DefaultResponseType) => {
+          if (!data.error) {
+            this.loadArticle();
+          }
+          this._snackBar.open(data.message);
+        })
+    } else {
+      this._snackBar.open('Напишите Ваш комментарий');
+    }
+  }
+
+  addActionToComment(commentId: string, action: string): void {
+    if (this.isLogged) {
+      this.commentService.addNewCommentAction({ commentId, action })
+        .subscribe((data: DefaultResponseType) => {
+          if (!data.error) {
+            this.comments.map(comment => {
+              if (comment.id === commentId) {
+                comment.userAction = action
+                action === 'like' ? comment.likesCount++ : comment.likesCount--;
+                action === 'like' ? comment.dislikesCount-- : comment.dislikesCount++;
+              };
+            })
+          }
+          this._snackBar.open(data.message);
+        })
+    }
+  }
 }
