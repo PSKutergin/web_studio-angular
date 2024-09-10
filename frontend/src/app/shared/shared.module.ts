@@ -4,12 +4,14 @@ import { RouterModule } from '@angular/router';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import { PhoneMaskDirective } from './directives/phone-mask.directive';
 import { NameValidationDirective } from './directives/name-validation.directive';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
     ArticleCardComponent,
     PhoneMaskDirective,
     NameValidationDirective,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { NameValidationDirective } from './directives/name-validation.directive'
   exports: [
     PhoneMaskDirective,
     NameValidationDirective,
-    ArticleCardComponent
+    ArticleCardComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }

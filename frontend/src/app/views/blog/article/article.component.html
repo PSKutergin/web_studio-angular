@@ -144,8 +144,7 @@
             </section>
 
 
-            <a class="article-comments-load" (click)="loadMoreComments()"
-                *ngIf="article.commentsCount && article.commentsCount > comments.length">
+            <a class="article-comments-load" (click)="loadMoreComments()" *ngIf="isShowLoadMore">
                 <span>Загрузить ещё комментарии</span>
                 <svg width="20.000000" height="20.000000" viewBox="0 0 20 20" fill="none"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -154,6 +153,8 @@
                         fill="#709FDC" fill-opacity="1.000000" fill-rule="nonzero" />
                 </svg>
             </a>
+
+            <app-loader></app-loader>
         </section>
 
     </section>

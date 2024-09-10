@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { CommentService } from 'src/app/shared/services/comment.service';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 import { ArticleType } from 'src/app/types/article.type';
 import { CommentType } from 'src/app/types/comment.type';
 import { DefaultResponseType } from 'src/app/types/default-response.type';
@@ -22,18 +23,26 @@ export class ArticleComponent implements OnInit {
   serverStaticPath = environment.serverStaticPath;
   isLogged: boolean = false;
   commentText: string = '';
+  isShowLoadMore: boolean = false;
 
   constructor(
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private articleService: ArticleService,
     private commentService: CommentService,
+    private loaderService: LoaderService,
     private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.isLogged = this.authService.getIsLoggedIn();
     this.loadArticle();
+
+    this.loaderService.show();
+  }
+
+  changeShowLoadMore(): void {
+    this.isShowLoadMore = this.article.commentsCount && this.article.commentsCount > this.comments.length ? true : false;
   }
 
   loadArticle(): void {
@@ -49,6 +58,8 @@ export class ArticleComponent implements OnInit {
   }
 
   proccesedComment(): void {
+    this.changeShowLoadMore();
+
     if (this.isLogged) {
       this.commentService.getArticleCommentActionsForUser(this.article.id)
         .subscribe((data: { comment: string, action: string }[]) => {
@@ -66,6 +77,9 @@ export class ArticleComponent implements OnInit {
   }
 
   loadMoreComments(): void {
+    this.loaderService.show();
+    this.isShowLoadMore = false;
+
     this.commentService.getCommentsByArticle({ article: this.article.id, offset: this.offset })
       .subscribe((data: { allCount: number, comments: CommentType[] }) => {
         this.comments = this.comments.concat(data.comments);
@@ -74,6 +88,7 @@ export class ArticleComponent implements OnInit {
         else this.offset = data.allCount;
 
         this.proccesedComment();
+        this.loaderService.hide();
       })
   }
 
@@ -83,6 +98,7 @@ export class ArticleComponent implements OnInit {
         .subscribe((data: DefaultResponseType) => {
           if (!data.error) {
             this.loadArticle();
+            this.commentText = '';
           }
           this._snackBar.open(data.message);
         })
