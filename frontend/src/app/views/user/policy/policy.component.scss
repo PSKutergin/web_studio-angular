@@ -1,0 +1,51 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+
+.policy {
+  padding: 60px 0 120px;
+
+  .container {
+    padding: 0 30px;
+
+    h2,
+    h3,
+    p {
+      margin-bottom: 20px;
+      color: $dark-blue;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: $font-montserrat-semi-bold;
+      font-size: 26px;
+      padding-top: 20px;
+    }
+
+    h3 {
+      text-align: center;
+      font-family: $font-montserrat-medium;
+      font-size: 22px;
+      padding-top: 10px;
+    }
+
+    ul {
+      margin-top: 10px;
+
+      li {
+        margin-bottom: 10px;
+      }
+    }
+
+    .italic {
+      font-family: $font-montserrat-light-italic;
+    }
+
+    .wrap-section {
+      font-family: $font-montserrat-medium;
+
+      .section {
+        font-family: $font-montserrat;
+      }
+    }
+  }
+}
