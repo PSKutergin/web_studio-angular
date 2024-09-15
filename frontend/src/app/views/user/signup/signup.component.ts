@@ -74,4 +74,42 @@ export class SignupComponent implements OnInit {
         });
     }
   }
+
+  getFullNameErrorMessage() {
+    if (this.fullName?.hasError('required')) {
+      return 'ФИО обязательна для заполнения';
+    } else if (this.fullName?.hasError('nameValidator')) {
+      return 'Некорректное ФИО';
+    } else {
+      return '';
+    }
+  }
+
+  getEmailErrorMessage() {
+    if (this.email?.hasError('required')) {
+      return 'Электронная почта обязательна для заполнения';
+    } else if (this.email?.hasError('email')) {
+      return 'Некорректная электронная почта';
+    } else {
+      return '';
+    }
+  }
+
+  getPasswordErrorMessage() {
+    if (this.password?.hasError('required')) {
+      return 'Пароль обязателен для заполнения';
+    } else if (this.password?.hasError('pattern')) {
+      return 'Пароль должен содержать цифры, строчные и прописные буквы';
+    } else {
+      return '';
+    }
+  }
+
+  getAgreeErrorMessage() {
+    if (this.agree?.hasError('required')) {
+      return 'Согласие обязательно';
+    } else {
+      return '';
+    }
+  }
 }

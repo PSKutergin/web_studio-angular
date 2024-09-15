@@ -64,4 +64,22 @@ export class LoginComponent implements OnInit {
         });
     };
   }
+
+  getEmailErrorMessage() {
+    if (this.email?.hasError('required')) {
+      return 'Электронная почта обязательна для заполнения';
+    } else if (this.email?.hasError('email')) {
+      return 'Некорректная электронная почта';
+    } else {
+      return '';
+    }
+  }
+
+  getPasswordErrorMessage() {
+    if (this.password?.hasError('required')) {
+      return 'Пароль обязателен для заполнения';
+    } else {
+      return '';
+    }
+  }
 }

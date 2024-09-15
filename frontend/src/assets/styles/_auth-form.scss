@@ -2,6 +2,8 @@
 @import "fonts";
 
 .auth-form {
+  max-width: 422px;
+
   &.auth-form-login {
     margin-top: 14px;
   }
@@ -11,6 +13,7 @@
     font-size: 36px;
     color: $blue;
     margin-bottom: 35px;
+    text-wrap: nowrap;
   }
 
   .auth-inputs {
@@ -22,13 +25,19 @@
       input {
         color: $dark-blue;
       }
+
+      .input-error {
+        font-size: 12px;
+        color: tomato;
+      }
     }
 
     .auth-checkbox {
       padding-top: 5px;
       max-width: 422px;
-      display: flex;
+      display: grid;
       align-items: baseline;
+      grid-template-columns: 14px 1fr;
       gap: 10px;
 
       label {
@@ -40,6 +49,12 @@
           color: $blue;
           text-decoration: underline;
         }
+      }
+
+      .input-error {
+        grid-column: 1 / -1;
+        font-size: 12px;
+        color: tomato;
       }
     }
   }

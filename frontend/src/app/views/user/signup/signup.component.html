@@ -9,18 +9,27 @@
                     <input type="text" class="input"
                         [ngStyle]="{'border-color': fullName?.invalid && (fullName?.touched || fullName?.dirty) ? 'tomato' : ''}"
                         placeholder="Ваше имя" formControlName="fullName" nameValidation>
+
+                    <span class="input-error"
+                        *ngIf="fullName?.invalid && (fullName?.touched || fullName?.dirty)">{{getFullNameErrorMessage()}}</span>
                 </section>
 
                 <section class="auth-input">
                     <input type="text" class="input"
                         [ngStyle]="{'border-color': email?.invalid && (email?.touched || email?.dirty) ? 'tomato' : ''}"
                         placeholder="Электронная почта" formControlName="email">
+
+                    <span class="input-error"
+                        *ngIf="email?.invalid && (email?.touched || email?.dirty)">{{getEmailErrorMessage()}}</span>
                 </section>
 
                 <section class="auth-input">
                     <input type="password" class="input"
                         [ngStyle]="{'border-color': password?.invalid && (password?.touched || password?.dirty) ? 'tomato' : ''}"
                         placeholder="Пароль" formControlName="password">
+
+                    <span class="input-error"
+                        *ngIf="password?.invalid && (password?.touched || password?.dirty)">{{getPasswordErrorMessage()}}</span>
                 </section>
 
                 <section class="auth-checkbox">
@@ -29,6 +38,9 @@
                             соглашения</a> и
                         даю <a routerLink="/policy" fragment="privacy">согласие на обработку персональных
                             данных.</a></label>
+
+                    <span class="input-error"
+                        *ngIf="agree?.invalid && (agree?.touched || agree?.dirty)">{{getAgreeErrorMessage()}}</span>
                 </section>
             </section>
 
