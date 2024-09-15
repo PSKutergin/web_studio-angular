@@ -118,11 +118,12 @@ export class ArticleComponent implements OnInit {
                   if (comment.id === commentId && !comment.userAction) {
                     if (action === 'like') comment.likesCount++;
                     if (action === 'dislike') comment.dislikesCount++;
+                    comment.userAction = action
                   } else if (comment.id === commentId && comment.userAction && action !== comment.userAction) {
                     action === 'like' ? comment.likesCount++ : comment.likesCount--;
                     action === 'like' ? comment.dislikesCount-- : comment.dislikesCount++;
+                    comment.userAction = action
                   }
-                  comment.userAction = action
                 })
                 this._snackBar.open('Ваш голос учтен');
               } else {
@@ -135,6 +136,8 @@ export class ArticleComponent implements OnInit {
             else this._snackBar.open('Произошла ошибка');
           }
         })
+    } else {
+      this._snackBar.open('Войдите в аккаунт');
     }
   }
 }
