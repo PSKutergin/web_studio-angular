@@ -8,18 +8,20 @@ services:
     volumes:
       - mongo-data:/data/db
 
-  # backend:
-  #   build:
-  #     context: ../backend
-  #     dockerfile: Dockerfile
-  #   container_name: backend
-  #   command: sh -c "npx migrate-mongo up && npm start"
-  #   volumes:
-  #     - ../backend:/app
-  #   depends_on:
-  #     - mongodb
-  #   ports:
-  #     - "3000:3000"
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: backend
+    command: sh -c "npx migrate-mongo up && npm start"
+    volumes:
+      - ../backend:/app
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/diploma
 
 volumes:
   mongo-data:
